@@ -9,10 +9,13 @@ import shopping.User;
 import shopping.UserDao;
 
 public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
+
+    private  UserDao userDao =new UserDao();
+
     @Override
     public void getUserDetails(UserRequest request, StreamObserver<UserResponse> responseObserver) {
       //  super.getUserDetails(request, responseObserver);
-        UserDao userDao =new UserDao();
+
         User user= userDao.getDetails(request.getUsername());
 
         //make a builder in order to convert user info to userResponse info

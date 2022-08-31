@@ -1,5 +1,6 @@
 package com.bahar.server;
 
+import com.bahar.service.OrderServiceImpl;
 import com.bahar.service.UserServiceImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -9,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class UserServer {
+public class OrderServer {
 
     private static final Logger logger = Logger.getLogger(UserServer.class.getName());
 
@@ -17,12 +18,12 @@ public class UserServer {
 
     public void StartServer()  {
 
-        int port =50051;
+        int port =50053;
         try {
             server = ServerBuilder.forPort(port)
-                    .addService(new UserServiceImpl())
+                    .addService(new OrderServiceImpl())
                     .build().start();
-            logger.info(" server started on port 50051. ");
+            logger.info(" server started on port 50053. ");
 
             // invoke the stopServer method was made in this class.
             Runtime.getRuntime().addShutdownHook(new Thread(){
@@ -31,7 +32,7 @@ public class UserServer {
                 public void run() {
                     logger.info("clean server showdown and JVM handle it... ");
                     try {
-                        UserServer.this.StopServer();
+                        OrderServer.this.StopServer();
                     } catch (InterruptedException exception) {
                         logger.log(Level.SEVERE,"server shutdown is interrupted...",exception);
                     }
@@ -57,10 +58,11 @@ public class UserServer {
 
     public static void main(String[] args) throws InterruptedException {
 
-        UserServer userServer = new UserServer();
-        userServer.StartServer();
+        OrderServer orderServer = new OrderServer();
+        orderServer.StartServer();
 //        userServer.StopServer();
-        userServer.BlockUntilShowdown();
+        orderServer.BlockUntilShowdown();
     }
+
 
 }

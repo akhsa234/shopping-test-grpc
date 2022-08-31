@@ -33,12 +33,13 @@ public class MysqlDatabaseConnection {
 
     public static Connection getConnectionToDatabase() {
         Connection connection = null;
+
         try {
             Class.forName("com.mysql.jdbc.Driver"); // Class.forName("org.h2.Driver");
 //            connection = DriverManager.getConnection(
 //                    "jdbc:h2:mem:shoppingDb", "", "");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/shopping", "", "");
+                    "jdbc:mysql://localhost:3306/shopping", "root", "123456");
 
         } catch (Exception exception) {
             logger.log(Level.SEVERE, "Could not set up connection", exception);

@@ -35,6 +35,13 @@
             <artifactId>grpc-stub</artifactId>
             <version>${grpc.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>4.0.0-rc-2</version>
+        </dependency>
+
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java-util</artifactId>
@@ -69,6 +76,37 @@
 
     </dependencies>
 
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>com.github.os72</groupId>-->
+<!--                <artifactId>protoc-jar-maven-plugin</artifactId>-->
+<!--                <version>3.6.0.1</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>protoc.main</id>-->
+<!--                        <phase>generate-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>run</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <protocVersion>3.6.0</protocVersion>-->
+<!--                            <addSources>main</addSources>-->
+<!--                            <includeMavenTypes>direct</includeMavenTypes>-->
+<!--                            <includeDirectories>-->
+<!--                                <include>src/main/protobuf</include>-->
+<!--                            </includeDirectories>-->
+<!--                            <inputDirectories>-->
+<!--                                <include>src/main/protobuf</include>-->
+<!--                            </inputDirectories>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
+<!--        </plugins>-->
+<!--    </build>-->
+
     <build>
         <extensions>
             <extension>
@@ -90,6 +128,7 @@
                 <executions>
                     <execution>
                         <goals>
+
                             <goal>compile</goal>
                             <goal>compile-custom</goal>
                         </goals>

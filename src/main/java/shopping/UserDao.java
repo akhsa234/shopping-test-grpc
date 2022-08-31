@@ -12,14 +12,20 @@ public class UserDao {
     private static final Logger logger = Logger.getLogger(UserDao.class.getName());
 
     public User getDetails(String username){
+
         User user = new User();
+        Connection connection=null;
 
         try{
-            Connection connection = MysqlDatabaseConnection.getConnectionToDatabase();
+             connection = MysqlDatabaseConnection.getConnectionToDatabase();
+
             PreparedStatement preparedStatement = connection
                     .prepareStatement("select * from user where username=?");
+
             preparedStatement.setString(1, username);
+
             ResultSet resultSet = preparedStatement.executeQuery();
+
             while(resultSet.next()){
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
